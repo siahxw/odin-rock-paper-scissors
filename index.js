@@ -79,3 +79,42 @@ function playRound(playerSelection, computerSelection) {
             break;
     }
 }
+
+function game() {
+    let userCounter = 0;
+    let computerCounter = 0;
+
+    for(i = 0; i < 5; i++) {
+        let userinput = prompt("Select Rock, Paper, or Scisssors");
+        userinput = userinput.toUpperCase();
+        let result = playRound(userinput, computerPlay());
+        /* The variable equals 0 before the loop starts.
+        For the loop to run, i must be less than 5.
+        Each time the code block in the loop has been executed,
+        i increases in value by 1. */
+        
+        if(result == "DRAW") {
+            result = "";
+            continue;
+        }
+
+        else if (result == "USER") {
+            result = "";
+            userCounter = userCounter + 1;
+        }
+
+        else if (result == "COMPUTER") {
+            result = ""
+            computerCounter = computerCounter + 1;
+        }
+
+        if(userCounter == 5) {
+            console.log("You won the game");
+            break;
+        }
+
+        else if (computerCounter == 5) {
+            console.log("You lost the game.");
+        }
+    }
+}
