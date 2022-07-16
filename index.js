@@ -118,3 +118,5 @@ function game() {
         }
     }
 }
+
+game();
