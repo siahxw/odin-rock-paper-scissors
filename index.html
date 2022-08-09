@@ -4,9 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script src="index.js"></script>
+
+    <div class="flex-container">
+        <h1>Rock Paper Scissors</h1>
+        <h2>First To Score 5 Wins</h2>
+    </div>
+
+    <div style ="text-align:center;" class="choiceBtn">
+        <button value="ROCK" class="button rock" onclick="playRound(userInput(1), computerPlay())">Rock 🪨</button>
+        <button value="PAPER" class="button paper" onclick="playRound(userInput(2), computerPlay())">Paper 📜</button>
+        <button value="SCISSORS" class="button scissors" onclick="playRound(userInput(3), computerPlay())">Scissors ✂️</button>
+    </div>
+
+    <div class="result">
+        <div class="display"></div>
+    </div>
+
+    <div class="scores">
+        <h3>Score</h3>
+
+        <div class="userscore">
+            <p class="para user"></p>
+            <p class="para userscoredisplay"></p>
+        </div>
+
+        <p class="para computer">
+            Computer : <span class="computerscore"></span>
+        </p>
+    </div>
+
+<script src="index.js"></script>
 </body>
 </html>

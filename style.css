@@ -1,0 +1,99 @@
+html, body {
+    width: 100%;
+    height:100%;
+  }
+  
+  body {
+      background: linear-gradient(-45deg, #FB475E, #019992, #44EE77, #FFB001);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    height: 250;
+}
+
+h1 {
+    font-family: 'Staatliches', cursive;
+    color :#000000;
+    font-size: 59px;
+    margin: auto;
+}
+
+hr.rounded {
+    border-top: 3px solid #bbb;
+}
+
+h2 {
+    font-family: 'Staatliches', cursive;
+    color :#000000;
+    font-size: 59px;
+    margin: auto;
+}
+
+.choiceBtn button {
+    background-color: transparent;
+    border: 4px solid #FB475E;
+    width: 250px;
+    height: 100px;
+    font-size: 37px;
+    font-weight: bold;
+    color: rgb(23, 23, 27);
+    margin-bottom: 30px;
+}
+
+.choiceBtn:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.scores {
+    color: black;
+    font-family: 'Staatliches', cursive;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border: 5px solid #FB475E;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.userscore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userscoredisplay {
+    margin-left: 2.5px;
+}
+
+.result {
+    color: black;
+    font-family: 'Staatliches', cursive;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    border: 0px solid #FB475E;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}

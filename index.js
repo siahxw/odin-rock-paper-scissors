@@ -1,122 +1,137 @@
+let userNameInput = prompt("Enter your username");
+let  userName = document.querySelector('.user');
+userName.innerHTML = userNameInput + " :  ";
+
+let rockBtn = document.querySelector('.rock');
+let paperBtn = document.querySelector('.paper');
+let scissorsBtn = document.querySelector('.scissors');
+let resultDisplay = document.querySelector('.display');
+let userCounter = 0, computerCounter = 0;
+let userScore = document.querySelector('.userscoredisplay');
+let computerScore = document.querySelector('.computerscore');
+let child = document.querySelector('.result');
+let link = document.createElement('div');
+link.setAttribute("class", "v2h2")
+link.innerHTML = `<a href="./index.html">Play Again</a>`
+
+function userInput(number) {
+     switch(number){
+          case 1:
+               return rockBtn.value;
+               break;
+
+          case 2:
+               return paperBtn.value;
+               break;
+          
+          case 3:
+               return scissorsBtn.value;
+               break;
+          
+          default:
+               break;
+     }
+}
+
 function computerPlay() {
-    let number = Math.floor(Math.random() * 3) // Generates a random number from 0 to 2.
-    switch(number) {
-        case 0:
-            return "ROCK"
-            break;
+     let number = Math.floor(Math.random() * 3)
+     switch(number){
+          case 0:
+               return "ROCK"
+               break;
 
-        case 1:
-            return "PAPER"
-            break;
+          case 1:
+               return "PAPER"
+               break;
 
-        case 2:
-            return "SCISSORS"
-            break;
-        
-        default:
-            break;
-/* The computerPlay function
-
-There are three possible conditions.
-If number equals 0 then "Rock" will be returned; if number equals
-1 then "Paper" will be returned; if number equals 2 then "Scissors"
-will be returned */
-    }
+          case 2:
+               return "SCISSORS"
+               break;
+          
+          default:
+               break;
+     }
 }
 
 function playRound(playerSelection, computerSelection) {
-    switch (playerSelection) {
-        case "ROCK":
-            if (computerSelection == "ROCK") {
-                console.log("Draw! You both selected Rock.")
-                return "DRAW"
-            }
-            if (computerSelection == "PAPER") {
-                console.log("You lose! Computer selected Paper. Paper beats Rock.")
-                return "COMPUTER"
-            }
-            if (computerSelection == "SCISSORS") {
-                console.log("You won! Rock beats Scissors.")
-                return "USER"
-            }
-            break;
-    }
+     switch (playerSelection){
+          case "ROCK":
+               if (computerSelection == "ROCK" ){
+                    resultDisplay.innerHTML = "<p>Draw! You both selected Rock.</p>";
+                    counter("DRAW");
+               }
+               if (computerSelection == "PAPER"){
+                    resultDisplay.innerHTML = "<p>You lose! Computer selected Paper. Paper beats Rock.</p>";
+                    counter("COMPUTER");
+               }
+               if (computerSelection == "SCISSORS"){
+                    resultDisplay.innerHTML = "<p>You won! Rock beats Scissors.</p>";
+                    counter("USER");
+               }
+               break;
 
-    switch (playerSelection) {
-        case "PAPER":
-            if (computerSelection == "ROCK") {
-                console.log("You won! Paper beats Rock.")
-                return "USER"
-            }
-            if (computerSelection == "PAPER") {
-                console.log("Draw! You both selected Paper.")
-                return "DRAW"
-            }
-            if (computerSelection == "SCISSORS") {
-                console.log("You lose! Computer selected Scissors. Scissors beats Paper.")
-                return "COMPUTER"
-            }
-            break;
-    }
+               case "PAPER":
+               if (computerSelection == "ROCK" ){
+                    resultDisplay.innerHTML = "<p>You won! Paper beats Rock.</p>";
+                    counter("USER");
+               }
+               if (computerSelection == "PAPER"){
+                    resultDisplay.innerHTML = "<p>Draw! You both selected Paper.</p>";
+                    counter("DRAW");
+               }
+               if (computerSelection == "SCISSORS"){
+                    resultDisplay.innerHTML = "<p>You lose! Computer selected Scissors. Scissors beats Paper.</p>";
+                    counter("COMPUTER");
+               }
+               break;
 
-    switch (playerSelection) {
-        case "SCISSORS":
-            if (computerSelection == "ROCK") {
-                console.log("You lose! Computer selected Rock. Rock beats Scissors.")
-                return "COMPUTER"
-            }
-            if (computerSelection == "PAPER") {
-                console.log("You won! Scissors beats Rock.")
-                return "USER"
-            }
-            if (computerSelection == "SCISSORS") {
-                console.log("Draw! You both selected Scissors.")
-                return "DRAW"
-            }
-            break;
-            
-        default:
-            break;
-    }
+               case "SCISSORS":
+               if (computerSelection == "ROCK" ){
+                    resultDisplay.innerHTML = "<p>You lose! Computer selected Rock. Rock beats Scissors.</p>";
+                    counter("COMPUTER");
+               }
+               if (computerSelection == "PAPER"){
+                    resultDisplay.innerHTML = "<p>You won! Scissors beats Rock.</p>";
+                    counter("USER");
+               }
+               if (computerSelection == "SCISSORS"){
+                    resultDisplay.innerHTML = "<p>Draw! You both selected Scissors.</p>";
+                    counter("DRAW");
+               }
+               break;
+
+          default:
+               break;
+     }
 }
 
-function game() {
-    let userCounter = 0;
-    let computerCounter = 0;
+function counter(result) {
+     
+     switch(result){
+          case "USER":
+               userCounter += 1;
+               userScore.innerHTML = userCounter;
+               computerScore.innerHTML = computerCounter;
+               
+               if(userCounter == 5){
+                    resultDisplay.innerHTML = `You won the game.`;
+                    child.appendChild(link);
+               }
+               
+               break;
+          
+          case "COMPUTER":
+               computerCounter += 1;
+               userScore.innerHTML = userCounter;
+               computerScore.innerHTML = computerCounter;
+               
+               if(computerCounter == 5){
+                    resultDisplay.innerHTML = `You lost the game.`;
+                    child.appendChild(link);
+               }
+               
+               break;
 
-    for(i = 0; i < 5; i++) {
-        let userinput = prompt("Select Rock, Paper, or Scisssors");
-        userinput = userinput.toUpperCase();
-        let result = playRound(userinput, computerPlay());
-        /* The variable equals 0 before the loop starts.
-        For the loop to run, i must be less than 5.
-        Each time the code block in the loop has been executed,
-        i increases in value by 1. */
-        
-        if(result == "DRAW") {
-            result = "";
-            continue;
-        }
+     }
 
-        else if (result == "USER") {
-            result = "";
-            userCounter = userCounter + 1;
-        }
-
-        else if (result == "COMPUTER") {
-            result = ""
-            computerCounter = computerCounter + 1;
-        }
-
-        if(userCounter == 5) {
-            console.log("You won the game");
-            break;
-        }
-
-        else if (computerCounter == 5) {
-            console.log("You lost the game.");
-        }
-    }
 }
-
-game();
