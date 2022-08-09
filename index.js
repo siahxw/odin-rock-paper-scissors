@@ -91,7 +91,7 @@ function playRound(playerSelection, computerSelection) {
                     counter("COMPUTER");
                }
                if (computerSelection == "PAPER"){
-                    resultDisplay.innerHTML = "<p>You won! Scissors beats Rock.</p>";
+                    resultDisplay.innerHTML = "<p>You won! Paper beats Rock.</p>";
                     counter("USER");
                }
                if (computerSelection == "SCISSORS"){
